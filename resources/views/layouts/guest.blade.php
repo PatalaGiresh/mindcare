@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="@yield('meta_description', 'MindCare — Mental Health Tracker & Therapy Booking Platform.')">
+    <meta name="description" content="@yield('meta_description', __('mindcare.hero_subtitle'))">
     <title>@yield('title', 'MindCare') — Mental Health & Therapy Platform</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="{{ asset('css/mindcare.css') }}">
@@ -19,9 +19,9 @@
             Mind<span class="brand-dot">Care</span>
         </a>
         <ul class="navbar-nav">
-            <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-            <li><a href="{{ route('therapists.index') }}" class="{{ request()->routeIs('therapists.*') ? 'active' : '' }}">Find Therapists</a></li>
-            <li><a href="{{ route('resources.index') }}" class="{{ request()->routeIs('resources.*') ? 'active' : '' }}">Resources</a></li>
+            <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">{{ __('mindcare.home') }}</a></li>
+            <li><a href="{{ route('therapists.index') }}" class="{{ request()->routeIs('therapists.*') ? 'active' : '' }}">{{ __('mindcare.find_therapist') }}</a></li>
+            <li><a href="{{ route('resources.index') }}" class="{{ request()->routeIs('resources.*') ? 'active' : '' }}">{{ __('mindcare.resources') }}</a></li>
         </ul>
         <div class="navbar-actions">
             <form action="{{ route('locale.set') }}" method="POST" style="display:inline">
@@ -33,16 +33,16 @@
             </form>
             @auth
                 @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Admin Panel</a>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">{{ __('mindcare.admin_panel') }}</a>
                 @elseif(auth()->user()->isTherapist())
-                    <a href="{{ route('therapist.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
+                    <a href="{{ route('therapist.dashboard') }}" class="btn btn-primary btn-sm">{{ __('mindcare.dashboard') }}</a>
                 @else
-                    <a href="{{ route('patient.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
+                    <a href="{{ route('patient.dashboard') }}" class="btn btn-primary btn-sm">{{ __('mindcare.dashboard') }}</a>
                 @endif
-                <form action="{{ route('logout') }}" method="POST" style="display:inline">@csrf<button type="submit" class="btn btn-ghost btn-sm">Logout</button></form>
+                <form action="{{ route('logout') }}" method="POST" style="display:inline">@csrf<button type="submit" class="btn btn-ghost btn-sm">{{ __('mindcare.logout') }}</button></form>
             @else
-                <a href="{{ route('login') }}" class="btn btn-ghost btn-sm">Login</a>
-                <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Get Started</a>
+                <a href="{{ route('login') }}" class="btn btn-ghost btn-sm">{{ __('mindcare.login') }}</a>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-sm">{{ __('mindcare.get_started') }}</a>
             @endauth
         </div>
     </div>
@@ -60,29 +60,29 @@
         <div class="grid-4" style="gap:40px;">
             <div>
                 <div class="footer-logo">Mind<span style="color:var(--accent-light)">Care</span></div>
-                <p style="font-size:0.875rem;line-height:1.7;max-width:220px;">Accessible, compassionate mental health support for everyone.</p>
+                <p style="font-size:0.875rem;line-height:1.7;max-width:220px;">{{ __('mindcare.footer_desc') }}</p>
             </div>
             <div>
-                <p style="color:#fff;font-weight:600;margin-bottom:14px;font-size:0.875rem;">Platform</p>
+                <p style="color:#fff;font-weight:600;margin-bottom:14px;font-size:0.875rem;">{{ __('mindcare.platform') }}</p>
                 <ul class="footer-links">
-                    <li><a href="{{ route('therapists.index') }}">Find Therapists</a></li>
-                    <li><a href="{{ route('resources.index') }}">Resources</a></li>
+                    <li><a href="{{ route('therapists.index') }}">{{ __('mindcare.find_therapist') }}</a></li>
+                    <li><a href="{{ route('resources.index') }}">{{ __('mindcare.resources') }}</a></li>
                 </ul>
             </div>
             <div>
-                <p style="color:#fff;font-weight:600;margin-bottom:14px;font-size:0.875rem;">Support</p>
+                <p style="color:#fff;font-weight:600;margin-bottom:14px;font-size:0.875rem;">{{ __('mindcare.support') }}</p>
                 <ul class="footer-links">
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">{{ __('mindcare.help_center') }}</a></li>
+                    <li><a href="#">{{ __('mindcare.privacy_policy') }}</a></li>
+                    <li><a href="#">{{ __('mindcare.terms_of_service') }}</a></li>
                 </ul>
             </div>
             <div>
-                <p style="color:#fff;font-weight:600;margin-bottom:14px;font-size:0.875rem;">Crisis Support</p>
+                <p style="color:#fff;font-weight:600;margin-bottom:14px;font-size:0.875rem;">{{ __('mindcare.crisis_support') }}</p>
                 <p style="font-size:0.82rem;line-height:1.8;">iCall: <strong style="color:#fff;">9152987821</strong><br>Vandrevala: <strong style="color:#fff;">1860-2662-345</strong></p>
             </div>
         </div>
-        <div class="footer-bottom"><span>© {{ date('Y') }} MindCare. All rights reserved.</span><span>Made with ♥ for mental wellness</span></div>
+        <div class="footer-bottom"><span>© {{ date('Y') }} MindCare. {{ __('mindcare.all_rights_reserved') }}</span><span>{{ __('mindcare.made_with_heart') }}</span></div>
     </div>
 </footer>
 @stack('scripts')

@@ -14,7 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         // Global middleware
         $middleware->append(\App\Http\Middleware\AttachAppHeaders::class);
-        $middleware->append(\App\Http\Middleware\SetLocale::class);
+
+        // Web middleware (Session dependent)
+        $middleware->web(append: [
+            \App\Http\Middleware\SetLocale::class,
+        ]);
 
         // Alias middleware
         $middleware->alias([
