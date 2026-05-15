@@ -47,13 +47,7 @@
         </form>
 
         <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border-light);text-align:center;">
-            <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:16px;">Don't have an account? <a href="{{ route('register') }}" style="color:var(--primary);font-weight:600;">Create one free</a></p>
-            <div style="font-size:0.78rem;color:var(--text-muted);background:var(--surface);border-radius:var(--radius-sm);padding:12px;">
-                <strong>Demo Accounts:</strong><br>
-                Admin: admin@mindcare.com / password<br>
-                Patient: rahul@example.com / password<br>
-                Therapist: drpriyasharma@mindcare.com / password
-            </div>
+            <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0;">Don't have an account? <a href="{{ route('register') }}" style="color:var(--primary);font-weight:600;">Create one free</a></p>
         </div>
     </div>
 </div>
