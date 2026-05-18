@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
-                <input id="name" type="text" name="name" value="{{ old('name') }}" class="form-control {{ $errors->has('name')?'is-invalid':'' }}" placeholder="Dr. or your full name" required autofocus>
+                <input id="name" type="text" name="name" value="{{ old('name') }}" class="form-control {{ $errors->has('name')?'is-invalid':'' }}" placeholder="Min 3 characters" required autofocus minlength="3">
                 @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
 
@@ -62,7 +62,7 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" name="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" placeholder="Min 8 characters" required>
+                    <input id="password" type="password" name="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" placeholder="Min 8 chars, letters & numbers" required minlength="8">
                     @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="form-group">

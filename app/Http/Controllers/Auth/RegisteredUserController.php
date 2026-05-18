@@ -23,9 +23,9 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name'          => ['required', 'string', 'max:255'],
+            'name'          => ['required', 'string', 'min:3', 'max:255'], // Name must be at least 3 characters
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+            'password'      => ['required', 'confirmed', Rules\Password::min(8)->letters()->numbers()], // Password must be 8+ chars with letters & numbers
             'role'          => ['required', 'in:patient,therapist'],
             'specialty'     => ['required_if:role,therapist', 'nullable', 'string', 'max:100'],
             'qualification' => ['nullable', 'string', 'max:255'],
